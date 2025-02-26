@@ -1,6 +1,8 @@
+Skills learned:
+- Navigation Bar (React Routing) [link](https://www.youtube.com/watch?v=SLfhMt5OUPI)
+
 # Getting Started with Create React App
 
-PGP! again
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
