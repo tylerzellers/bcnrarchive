@@ -7,7 +7,7 @@ html, body {
 .container {
     display: flex;
     height: 100vh; /* Full viewport height */
-    align-items:center;
+    align-items: center;
     overflow: hidden;
 }
 
@@ -15,10 +15,10 @@ html, body {
     width: 280px;
     background-color: black;
     color: white;
-    padding: 8px 8px 8px 8px;
-    height: 80vh; /* Full height */
+    padding: 8px;
+    height: 80vh;
     align-self: flex-start;
-    border-radius: 12px; /* Rounded corners */
+    border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     overflow: hidden;
 }
@@ -27,7 +27,6 @@ html, body {
     font-size: 1.5rem;
     font-weight: bold;
     margin: 0;
-    
 }
 
 .video-list {
@@ -49,11 +48,7 @@ html, body {
     padding: 0;
     border-radius: 8px;
     transition: background 0.2s ease-in-out;
-}
-
-.video-item:hover {
-    background-color: #333;
-    color: gray;
+    position: relative;
 }
 
 .video-container {
@@ -87,3 +82,69 @@ html, body {
     max-width: 900px;
     height: 40vh; /* Adjust based on preference */
 }
+
+/* Year Header */
+.year-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-bottom: 2px solid #333;
+}
+
+.year-header:hover {
+    background-color: #333; /* Highlight year header only */
+}
+
+/* Submenu */
+.sub-menu {
+    list-style: none;
+    padding-left: 20px;  /* Indent sub-items */
+    display: none;  /* Default: Hidden */
+    transition: max-height 0.3s ease-in-out; /* Smooth transition */
+    margin-top: 5px; /* Space between year and submenu */
+    position: relative;
+}
+
+.sub-menu.expanded {
+    display: block;
+}
+
+.sub-menu:hover {
+    pointer-events: auto; /* Allow hovering and interacting with submenu items */
+}
+
+/* When the year item is clicked, show the submenu */
+.video-item.open .sub-menu {
+    display: block;
+}
+
+/* Video subitem - Prevent submenu highlight propagation */
+.video-subitem {
+    cursor: pointer;
+    padding: 8px;
+    transition: background 0.2s ease;
+    white-space: nowrap;  /* Prevent wrapping */
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.video-subitem:hover {
+    background-color: #333; /* Highlight video items on hover */
+}
+
+/* ✅ Video Item (Text) - Shows (Month-Day) - (Title) in one line */
+.video-subitem p {
+    margin: 0;
+    font-size: 1rem;
+    color: white;
+}
+
+/* Prevent hovering over the year header from affecting the submenu */
+.video-item:hover .sub-menu {
+    background-color: transparent /* Allow submenu items to be clickable */
+}
+
+
+

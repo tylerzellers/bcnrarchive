@@ -6,6 +6,7 @@ export default function SidebarVideo() {
     // State for video list and selected video
     const [videos, setVideos] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);
+    const [expandedYears, setExpandedYears] = useState({});
 
     // Fetch video list from JSON
     useEffect(() => {
@@ -18,19 +19,55 @@ export default function SidebarVideo() {
             .catch((error) => console.error("Error loading videos:", error));
     }, []);
 
+    // Group videos by year
+    const groupedByYear = videos.reduce((acc, video) => {
+        const videoYear = new Date(video.date).getFullYear();
+        if (!acc[videoYear]) {
+            acc[videoYear] = [];
+        }
+        acc[videoYear].push(video);
+        return acc;
+    }, {});
+
+    const sortedYears = Object.keys(groupedByYear).sort((a, b) => b - a);
+
+    const toggleYear = (year) => {
+        setExpandedYears((prevState) => ({
+            ...prevState,
+            [year]: !prevState[year], // Toggle the specific year
+        }));
+    };
+
     return (
         <div className={style["container"]}>
             <nav className={style["sidebar"]}>
                 <h2>Video List</h2>
                 <ul className={style["video-list"]}>
-                    {videos.map((video, index) => (
-                        <li 
-                            key={index} 
-                            className={style["video-item"]}
-                            onClick={() => setSelectedVideo(video)}
+                    {sortedYears.map((year) => (
+                        <li
+                            key={year}
+                            className={`${style["video-item"]} ${expandedYears[year] ? style["open"] : ""}`}
                         >
-                            <p>{video.date}</p>
-                            <p>{video.description}</p>
+                            <div
+                                className={style["year-header"]}
+                                onClick={() => toggleYear(year)}
+                            >
+                                <span>{year}</span>
+                            </div>
+
+                            {expandedYears[year] && (
+                                <ul className={style["sub-menu"]}>
+                                    {groupedByYear[year].map((video, index) => (
+                                        <li
+                                            key={index}
+                                            className={style["video-subitem"]}
+                                            onClick={() => setSelectedVideo(video)}
+                                        >
+                                            <p>{`${new Date(video.date).toLocaleDateString("en-US", { month: "2-digit", day: "2-digit" })} - ${video.description}`}</p>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
                         </li>
                     ))}
                 </ul>
@@ -40,8 +77,6 @@ export default function SidebarVideo() {
             <div className={style["video-container"]}>
                 {selectedVideo && (
                     <>
-                        {/*<h2 className={style["video-title"]}>{selectedVideo.description}</h2>
-                        <p className={style["video-date"]}>{selectedVideo.date}</p>*/}
                         <ReactPlayer url={selectedVideo.url} controls className={style["video-player"]} />
                     </>
                 )}
