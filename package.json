@@ -4,12 +4,14 @@
   "private": true,
   "dependencies": {
     "@tailwindcss/cli": "^4.0.9",
+    "@tailwindcss/vite": "^4.0.9",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^13.5.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-player": "^2.16.0",
     "react-router-dom": "^7.2.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
@@ -39,6 +41,8 @@
     ]
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.3",
     "tailwindcss": "^4.0.9"
   }
 }

@@ -1,3 +1,9 @@
+import SidebarVideo from "../SidebarVideo/SidebarVideo";
+
 export default function Video(){
-    return <h1>vidvidvid!</h1>;
+    return (
+        <div className="flex">
+            <SidebarVideo />
+        </div>
+    );
 }

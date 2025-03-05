@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar";
 import React from 'react';
-import "./styles.css"
+import "./css/styles.css"
 import Home from "./components/pages/Home";
 import Photo from "./components/pages/Photo";
 import Video from "./components/pages/Video";

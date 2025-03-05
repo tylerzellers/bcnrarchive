@@ -1,3 +1,9 @@
+import SidebarPhoto from "../SidebarPhoto";
+
 export default function Photo(){
-    return <h1>phooootos!</h1>;
+    return (
+        <div className="flex">
+            <SidebarPhoto />
+        </div>
+    );
 }

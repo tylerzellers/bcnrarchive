@@ -1,5 +1,6 @@
 Skills learned:
 - Navigation Bar (React Routing) [link](https://www.youtube.com/watch?v=SLfhMt5OUPI)
+- [react-player](https://github.com/cookpete/react-player)
 
 # Getting Started with Create React App
 
