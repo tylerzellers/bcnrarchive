@@ -28,6 +28,18 @@
         "date": "2024-12-10",
         "url": "https://www.youtube.com/watch?v=3xluD_tMLgY",
         "description": "Festival performance in Los Angeles"
+    },
+    {
+        "date": "2019-02-02",
+        "url": "https://www.youtube.com/watch?v=bIP62_0htow",
+        "description": "The Windmill - Independent Venue Week",
+        "setlist": [
+            { "time": "00:00", "song": "Suggestions Bar (aka Macbook Pro, or Algorithm)" },
+            { "time": "08:26", "song": "Sunglasses" },
+            { "time": "18:05", "song": "Kendall Jenner" },
+            { "time": "23:00", "song": "Athens, France" },
+            { "time": "29:06", "song": "Opus" }
+        ]
     }
 
 ]

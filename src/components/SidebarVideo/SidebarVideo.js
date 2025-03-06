@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ReactPlayer from "react-player";
 import style from "./SidebarVideo.module.css"
 
@@ -7,6 +7,8 @@ export default function SidebarVideo() {
     const [videos, setVideos] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);
     const [expandedYears, setExpandedYears] = useState({});
+    const playerRef = useRef(null); // Ref for ReactPlayer
+    const [playing, setPlaying] = useState(false);
 
     // Fetch video list from JSON
     useEffect(() => {
@@ -19,9 +21,16 @@ export default function SidebarVideo() {
             .catch((error) => console.error("Error loading videos:", error));
     }, []);
 
+    //Function to convert time (MM:SS) to seconds
+    const convertTimeToSeconds = (time) => {
+        const [minutes, seconds] = time.split(":").map(Number);
+        return minutes * 60 + seconds;
+    };
+
     // Group videos by year
     const groupedByYear = videos.reduce((acc, video) => {
-        const videoYear = new Date(video.date).getFullYear();
+        const dateParts = video.date.split("-"); // ["YYYY", "MM", "DD"]
+        const videoYear = new Date(Date.UTC(dateParts[0], dateParts[1] - 1, dateParts[2])).getFullYear();
         if (!acc[videoYear]) {
             acc[videoYear] = [];
         }
@@ -57,15 +66,21 @@ export default function SidebarVideo() {
 
                             {expandedYears[year] && (
                                 <ul className={style["sub-menu"]}>
-                                    {groupedByYear[year].map((video, index) => (
-                                        <li
-                                            key={index}
-                                            className={style["video-subitem"]}
-                                            onClick={() => setSelectedVideo(video)}
-                                        >
-                                            <p>{`${new Date(video.date).toLocaleDateString("en-US", { month: "2-digit", day: "2-digit" })} - ${video.description}`}</p>
-                                        </li>
-                                    ))}
+                                    {groupedByYear[year].map((video, index) => {
+                                        const dateParts = video.date.split("-"); // ["YYYY", "MM", "DD"]
+                                        const formattedDate = `${dateParts[1]}/${dateParts[2]}`; // "MM/DD"
+
+                                        return (
+                                            <li
+                                                key={index}
+                                                className={style["video-subitem"]}
+                                                onClick={() => setSelectedVideo(video)}
+                                            >
+                                                <p>{`${formattedDate} - ${video.description}`}</p>
+                                            </li>
+                                        );
+                                    })}
+
                                 </ul>
                             )}
                         </li>
@@ -77,10 +92,40 @@ export default function SidebarVideo() {
             <div className={style["video-container"]}>
                 {selectedVideo && (
                     <>
-                        <ReactPlayer url={selectedVideo.url} controls className={style["video-player"]} />
+                        <ReactPlayer 
+                            ref={playerRef}
+                            url={selectedVideo.url} 
+                            controls 
+                            playing={playing}
+                            className={style["video-player"]} 
+                        />
+
+                        {/* Setlist Section */}
+                        {selectedVideo.setlist && (
+                            <div className={style["setlist-container"]}>
+                                <h3>Setlist</h3>
+                                <ul className={style["setlist"]}>
+                                    {selectedVideo.setlist.map((item, index) => (
+                                        <li key={index} 
+                                            className={style["setlist-item"]}
+                                            onClick={() => {
+                                                if (playerRef.current) {
+                                                    playerRef.current.seekTo(convertTimeToSeconds(item.time), "seconds");
+                                                    setPlaying(true);
+                                                }
+                                            }}
+                                        >
+                                            <span className={style["setlist-time"]}>{item.time}</span> - 
+                                            <span className={style["setlist-song"]}>{item.song}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
                     </>
                 )}
             </div>
+
         </div>
     );
 }

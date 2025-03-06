@@ -7,7 +7,6 @@ html, body {
 .container {
     display: flex;
     height: 100vh; /* Full viewport height */
-    align-items: center;
     overflow: hidden;
 }
 
@@ -54,12 +53,12 @@ html, body {
 .video-container {
     flex: 1; /* Takes up remaining space */
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     padding: 10px;
-    height: 100vh;
     overflow: hidden;
+    height: 80vh;
 }
 
 /* Style the video title & date */
@@ -78,9 +77,9 @@ html, body {
 
 /* Ensure ReactPlayer takes up a good portion of the screen */
 .video-player {
-    width: 80%;
-    max-width: 900px;
-    height: 40vh; /* Adjust based on preference */
+    flex: 2;
+    max-width: 70%;
+    align-self: flex-start;
 }
 
 /* Year Header */
@@ -144,6 +143,51 @@ html, body {
 /* Prevent hovering over the year header from affecting the submenu */
 .video-item:hover .sub-menu {
     background-color: transparent /* Allow submenu items to be clickable */
+}
+
+.setlist-container {
+    flex: 1;
+    margin-left: 20px;
+    background: #222;
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    align-self: flex-start;
+}
+
+.setlist h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.setlist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.setlist-item {
+    cursor: pointer;
+    padding: 5px;
+    transition: background 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+}
+
+.setlist-item:hover {
+    background-color: #333;
+}
+
+.setlist-time {
+    font-weight: bold;
+    color: #aaa;
+}
+
+.setlist-song {
+    flex-grow: 1;
+    text-align: left;
+    padding-left: 5px;
 }
 
 
