@@ -190,5 +190,56 @@ html, body {
     padding-left: 5px;
 }
 
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; 
+        align-items: center; 
+        height: auto; 
+    }
 
+    .sidebar {
+        width: 100%; 
+        height: auto; /* Auto height */
+        margin-bottom: 10px; 
+        overflow-y: auto;
+        scrollbar-width: none;
+    }
 
+    .sidebar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .video-container {
+        flex-direction: column; /* Stack video & setlist */
+        align-items: center;
+        width: 100%;
+        height: auto;
+    }
+    
+    .video-player {
+        width: 90%; 
+        max-width: 100%;
+        height: auto;
+    }
+
+    .video-subitem p {
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    .setlist-container {
+        width: 90%; 
+        margin-left: 0;
+        margin-top: 10px; 
+    }
+
+    .setlist-item {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    .year-header {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
