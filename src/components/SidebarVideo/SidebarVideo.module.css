@@ -130,7 +130,7 @@ html, body {
 }
 
 .video-subitem:hover {
-    background-color: #333; /* Highlight video items on hover */
+    background-color: #333;
 }
 
 /* ✅ Video Item (Text) - Shows (Month-Day) - (Title) in one line */
@@ -148,7 +148,7 @@ html, body {
 .setlist-container {
     flex: 1;
     margin-left: 20px;
-    background: #222;
+    background: black;
     padding: 10px;
     border-radius: 8px;
     color: white;
