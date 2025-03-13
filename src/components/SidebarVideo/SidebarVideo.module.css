@@ -1,7 +1,7 @@
 html, body {
-    height: 100%; /* Ensure the whole page fills the viewport */
+    height: auto; /* Ensure the whole page fills the viewport */
     margin: 0; /* Remove default margin */
-    overflow: hidden; /* Hide page scrollbar */
+    overflow: auto; /* Hide page scrollbar */
 }
 
 .container {
@@ -199,8 +199,9 @@ html, body {
 
     .sidebar {
         width: 100%; 
-        height: auto; /* Auto height */
+        height: auto;
         margin-bottom: 10px; 
+        max-height: 40vh;
         overflow-y: auto;
         scrollbar-width: none;
     }
@@ -210,7 +211,7 @@ html, body {
     }
 
     .video-container {
-        flex-direction: column; /* Stack video & setlist */
+        flex-direction: column;
         align-items: center;
         width: 100%;
         height: auto;
@@ -228,9 +229,12 @@ html, body {
     }
 
     .setlist-container {
+        display: block;
         width: 90%; 
         margin-left: 0;
         margin-top: 10px; 
+        max-height: 40vh;
+        overflow-y: auto;
     }
 
     .setlist-item {
