@@ -11,7 +11,6 @@ export default function About(){
             <br/>
             <div>Issues regarding the website can also be emailed, but I am trying to model an open source project, so issues filed on github are vastly preferred!</div>
         </div>
-           <h1>preserving the internet, forever</h1>
 
         <div className="about-container">
             <a href="https://github.com/tylerzellers" target="_blank" rel="noopener noreferrer" className="about-link">

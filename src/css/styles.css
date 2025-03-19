@@ -4,7 +4,7 @@
   
 html, body {
   font-family: 'Arial', sans-serif;
-  color: black;
+  color: #2B2B2B;
   background-color: #f9eec2;
 }
 
@@ -14,11 +14,9 @@ html, body {
 }
 
 .nav {
-  background-color: #333;
-  color: white;
   display: flex;
-  justify-content: space-between;
-  align-items: stretch;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
   padding: 0 1rem;
 }
@@ -42,12 +40,32 @@ html, body {
   display: flex;
   align-items: center;
   padding: .25rem;
+  font-weight: bold;
+  position: relative;
+  transition: color 0.3s ease-in-out;
 }
 
-.nav li.active {
-  background-color: #555;
+.nav li.active a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px; /* Adjusts underline position */
+  width: 100%;
+  height: 2px;
+  background-color: #8B0000;
 }
 
-.nav li:hover {
-  background-color: #777;
+.nav a:hover {
+  color: #8B0000; /* Gold color on hover */
+}
+
+.nav a:hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background-color: #8B0000; /* Gold underline on hover */
+  transition: width 0.3s ease-in-out;
 }
