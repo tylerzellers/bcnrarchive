@@ -2,8 +2,10 @@
     box-sizing: border-box;
 }
   
-body {
-  margin: 0;
+html, body {
+  font-family: 'Arial', sans-serif;
+  color: black;
+  background-color: #f9eec2;
 }
 
 .container {

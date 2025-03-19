@@ -1,0 +1,65 @@
+.homepage-img {
+    display: block;
+    height: auto;
+    max-width: 20%;
+    border-radius: .5rem;
+    margin: 0 auto;
+    padding:0%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: auto;
+    text-align: center;
+}
+
+.homepage-text {
+    font-size: 1rem;
+    max-width: 80%; 
+    text-align: center;
+    margin: .25rem auto;
+}
+
+.album-container {
+    display: flex;
+    justify-content: center; /* Center the row */
+    gap: 20px; /* Space between albums */
+    padding: 20px;
+    flex-wrap: wrap; /* Ensures wrapping on smaller screens */
+}
+
+.album {
+    text-align: center;
+    flex: 1; /* Ensures equal spacing */
+    max-width: 200px; /* Controls album size */
+}
+
+.album img {
+    width: 100%; /* Makes images responsive */
+    height: auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
+    transition: transform 0.3s ease-in-out;
+}
+
+.album img:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .album-container {
+        flex-wrap: wrap; /* Allows wrapping if screen is small */
+    }
+    .album {
+        flex: 1 1 calc(50% - 20px); /* Two per row on medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .album {
+        flex: 1 1 100%; /* One per row on small screens */
+    }
+}
