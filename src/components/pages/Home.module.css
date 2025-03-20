@@ -33,14 +33,14 @@
 
 .album {
     text-align: center;
-    flex: 1; /* Ensures equal spacing */
+    flex: 1;
     max-width: 200px; /* Controls album size */
 }
 
 .album img {
-    width: 100%; /* Makes images responsive */
+    width: 100%;
     height: auto;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease-in-out;
 }
 
@@ -52,6 +52,9 @@
 @media (max-width: 768px) {
     .album-container {
         flex-wrap: wrap; /* Allows wrapping if screen is small */
+    }
+    .homepage-img {
+        max-width: 20%;
     }
     .album {
         flex: 1 1 calc(50% - 20px); /* Two per row on medium screens */

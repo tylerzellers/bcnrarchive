@@ -103,7 +103,7 @@ export default function SidebarVideo() {
                         {/* Setlist Section */}
                         {selectedVideo.setlist && (
                             <div className={style["setlist-container"]}>
-                                <h3>Setlist</h3>
+                                <h2>Setlist</h2>
                                 <ul className={style["setlist"]}>
                                     {selectedVideo.setlist.map((item, index) => (
                                         <li key={index} 
