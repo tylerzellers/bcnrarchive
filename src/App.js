@@ -1,5 +1,4 @@
 import Navbar from "./components/Navbar";
-import BottomBar from "./components/BottomBar/BottomBar";
 import React from 'react';
 import "./css/styles.css"
 import Home from "./components/pages/Home";
